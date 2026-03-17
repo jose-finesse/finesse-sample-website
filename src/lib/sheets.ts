@@ -3,12 +3,17 @@ import { google } from "googleapis";
 const SCOPES = ["https://www.googleapis.com/auth/spreadsheets"];
 
 function getAuth() {
-  const credentials = JSON.parse(
-    process.env.GOOGLE_SERVICE_ACCOUNT_KEY || "{}"
+  const clientEmail = process.env.GOOGLE_CLIENT_EMAIL;
+  const privateKey = (process.env.GOOGLE_PRIVATE_KEY || "").replace(
+    /\\n/g,
+    "\n"
   );
 
   return new google.auth.GoogleAuth({
-    credentials,
+    credentials: {
+      client_email: clientEmail,
+      private_key: privateKey,
+    },
     scopes: SCOPES,
   });
 }
