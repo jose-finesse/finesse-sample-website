@@ -1,25 +1,5 @@
 import { NextResponse } from "next/server";
-import { promises as fs } from "fs";
-import path from "path";
-
-const DATA_FILE = path.join(process.cwd(), "rsvps.json");
-
-interface RSVP {
-  name: string;
-  email: string;
-  instagram: string;
-  plusOne: string;
-  timestamp: string;
-}
-
-async function readRSVPs(): Promise<RSVP[]> {
-  try {
-    const data = await fs.readFile(DATA_FILE, "utf-8");
-    return JSON.parse(data);
-  } catch {
-    return [];
-  }
-}
+import { appendToSheet, getSheetData } from "@/lib/sheets";
 
 export async function POST(request: Request) {
   try {
@@ -33,28 +13,22 @@ export async function POST(request: Request) {
       );
     }
 
-    const rsvps = await readRSVPs();
-
-    const existing = rsvps.find(
-      (r) => r.email.toLowerCase() === email.toLowerCase()
+    const existing = await getSheetData();
+    const duplicate = existing.some(
+      (row) => row[1]?.toLowerCase() === email.toLowerCase()
     );
-    if (existing) {
+
+    if (duplicate) {
       return NextResponse.json({ message: "Already registered" });
     }
 
-    const newRSVP: RSVP = {
-      name,
-      email,
-      instagram: instagram || "",
-      plusOne: plusOne || "",
-      timestamp: new Date().toISOString(),
-    };
-
-    rsvps.push(newRSVP);
-    await fs.writeFile(DATA_FILE, JSON.stringify(rsvps, null, 2));
+    await appendToSheet([
+      [name, email, instagram || "", plusOne || "", new Date().toISOString()],
+    ]);
 
     return NextResponse.json({ message: "RSVP confirmed" });
-  } catch {
+  } catch (error) {
+    console.error("RSVP error:", error);
     return NextResponse.json(
       { error: "Something went wrong" },
       { status: 500 }
@@ -63,6 +37,22 @@ export async function POST(request: Request) {
 }
 
 export async function GET() {
-  const rsvps = await readRSVPs();
-  return NextResponse.json({ count: rsvps.length, rsvps });
+  try {
+    const data = await getSheetData();
+    const rsvps = data.slice(1).map((row) => ({
+      name: row[0] || "",
+      email: row[1] || "",
+      instagram: row[2] || "",
+      plusOne: row[3] || "",
+      timestamp: row[4] || "",
+    }));
+
+    return NextResponse.json({ count: rsvps.length, rsvps });
+  } catch (error) {
+    console.error("RSVP fetch error:", error);
+    return NextResponse.json(
+      { error: "Something went wrong" },
+      { status: 500 }
+    );
+  }
 }
