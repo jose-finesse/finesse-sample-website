@@ -87,9 +87,9 @@ export default function InvitePage() {
                 marginBottom: "28px",
               }}
             >
-              Private preview of the Finesse archive. Friday, March 20th from
-              3PM. 700 S Flower St, 18th Floor, DTLA. Welcome cocktail, music
-              by Batule DJ &amp; Nando Pro.
+              Private view of the Finesse archive and lookbook shoot with
+              guests. Friday, March 20th from 3PM to 8PM. 700 S Flower St,
+              18th Floor, DTLA. Welcome cocktail, live music. Limited spots.
             </p>
 
             <form onSubmit={handleSubmit}>

@@ -6,10 +6,10 @@ export const metadata: Metadata = {
     apple: "/finesse-logo.png",
   },
   title: "FINESSE — You're Invited",
-  description: "Private preview of the Finesse archive. March 20th, DTLA.",
+  description: "Private view of the Finesse archive and lookbook shoot with guests. Friday, March 20th from 3PM to 8PM. DTLA. Limited spots.",
   openGraph: {
     title: "FINESSE — You're Invited",
-    description: "Private preview of the Finesse archive. March 20th, DTLA.",
+    description: "Private view of the Finesse archive and lookbook shoot with guests. Friday, March 20th from 3PM to 8PM. DTLA. Limited spots.",
     type: "website",
     images: [
       {
