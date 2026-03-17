@@ -1,6 +1,10 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
+  icons: {
+    icon: "/finesse-logo.png",
+    apple: "/finesse-logo.png",
+  },
   title: "FINESSE — You're Invited",
   description: "Private preview of the Finesse archive. March 20th, DTLA.",
   openGraph: {
