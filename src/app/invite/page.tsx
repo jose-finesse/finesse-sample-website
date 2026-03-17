@@ -98,6 +98,8 @@ export default function InvitePage() {
                   type="text"
                   placeholder="Full name"
                   required
+                  maxLength={100}
+                  autoComplete="off"
                   value={form.name}
                   onChange={(e) => setForm({ ...form, name: e.target.value })}
                   style={inputStyle}
