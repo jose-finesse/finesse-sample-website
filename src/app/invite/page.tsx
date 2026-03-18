@@ -87,10 +87,10 @@ export default function InvitePage() {
                 marginBottom: "28px",
               }}
             >
-              Private view of the Finesse archive. Friday, March 20th from 3PM
-              to 8PM. 700 S Flower St, 18th Floor, DTLA. Welcome cocktail,
-              live music. Jose Peon will be shooting lookbook, come ready to be
-              captured. Limited spots.
+              Private view of the Finesse archive. Jose Peon will be shooting
+              lookbook — come ready to be captured. Friday, March 20th from
+              3PM to 8PM. 700 S Flower St, 18th Floor, DTLA. Welcome cocktail,
+              live music. Limited spots.
             </p>
 
             <form onSubmit={handleSubmit}>
