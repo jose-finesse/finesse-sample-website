@@ -89,8 +89,8 @@ export default function InvitePage() {
             >
               Private view of the Finesse archive. Jose Peon will be shooting
               lookbook — come ready to be captured. Friday, March 20th from
-              3PM to 8PM. 700 S Flower St, 18th Floor, DTLA. Welcome cocktail,
-              live music. Limited spots.
+              3PM to 8PM. 700 S Flower St, 18th Floor, DTLA. Welcome cocktail.
+              Limited spots.
             </p>
 
             <form onSubmit={handleSubmit}>
@@ -168,12 +168,10 @@ export default function InvitePage() {
                 marginBottom: "8px",
               }}
             >
-              You're on the list
+              Thank you!
             </h1>
             <p style={{ fontSize: "14px", color: "#999", lineHeight: 1.5 }}>
-              Friday, March 20th. 3PM. 18th Floor.
-              <br />
-              See you there.
+              Confirmations will be sent in the coming days.
             </p>
           </div>
         )}
