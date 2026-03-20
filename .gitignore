@@ -44,3 +44,11 @@ rsvps.json
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# large unused assets
+public/FINESSEARCHIVE.jpg
+public/FINESSEEEEEE.jpg
+public/Frame 12.jpg
+
+# system files
+.DS_Store
